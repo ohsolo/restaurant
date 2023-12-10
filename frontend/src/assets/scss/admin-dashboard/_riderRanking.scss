@@ -1,0 +1,50 @@
+.az_rider_ranking {
+  .rider_profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .profile_wrapper {
+      display: flex;
+      align-items: center;
+      .img_wrapper {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        border-radius: 60px;
+        background-color: #ccc;
+      }
+    }
+  }
+  .rating_wrapper {
+    margin-top: 1rem;
+    padding: 1rem;
+    .card {
+      flex-direction: row;
+      padding: 8px;
+      .az_left {
+        .img_wrapper {
+          width: 80px;
+          height: 80px;
+          background: #ccc;
+          border-radius: 60px;
+          overflow: hidden;
+        }
+      }
+      .az_right {
+        width: 100%;
+        .head {
+          display: flex;
+          justify-content: space-between;
+          padding: 8px;
+        }
+        .content {
+          padding: 8px;
+        }
+        .foo {
+          padding: 8px;
+        }
+      }
+    }
+  }
+}

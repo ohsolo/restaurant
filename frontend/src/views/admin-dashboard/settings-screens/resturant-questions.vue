@@ -1,0 +1,233 @@
+<template>
+  <section class="settings_screens">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h4 class="sec_hd t_primary fw-bold mb-4 mt-4">
+            {{ $t("rtQuesPg.main_title") }}
+          </h4>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12 text-end">
+          <button type="button" class="btn-success border-0 rounded px-3 py-2" @click="addQuestion()">
+            <fa icon="plus" /><span class="ms-2">{{ $t("addBtn") }}</span>
+          </button>
+        </div>
+      </div>
+      <form action="" class="az_globalForm" @submit.prevent="handleFrom" v-if="formCheck">
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-sm-12 mb-sm-0 mb-3">
+            <div class="input_wrapper">
+              <label for="">{{ $t("rtQuesPg.label1") }}</label>
+              <input type="text" required question="question" class="form-control mt-2" v-model="form.question" />
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-sm-12">
+            <div class="btn_wrapper mt-4 mb-4">
+              <button type="button" @click="() => (formCheck = false)"
+                class="border-0 btn-secondary px-2 py-1 rounded me-2">
+                {{ $t("cancelBtn") }}
+              </button>
+              <input type="submit" class="
+                  border-0
+                  bg_primary
+                  focus_primary
+                  text-light
+                  hover_light
+                  px-2
+                  py-1
+                  rounded
+                  me-2
+                " :value="$t('sendBtn')" />
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row pb-5">
+        <div class="col-12">
+          <div class="table-responsive">
+            <table class="table table-hover" style="min-width: 500px">
+              <thead>
+                <tr>
+                  <th class="pt-3 bg-dark">
+                    <h5 class="p_0 text-start text-light">
+                      {{ $t("rtQuesPg.th1") }}
+                    </h5>
+                  </th>
+                  <th class="bg-dark">
+                    <h5 class="p_0 text-center text-light">
+                      {{ $t("rtQuesPg.th2") }}
+                    </h5>
+                  </th>
+                  <th class="bg-dark">
+                    <h5 class="p_0 text-end text-light">
+                      {{ $t("rtQuesPg.th3") }}
+                    </h5>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="3" align="center" v-if="records == ''">
+                    <span>{{ $t("rtQuesPg.notFound") }}</span>
+                  </td>
+                </tr>
+                <tr v-for="data in records" :key="data">
+                  <td valign="middle" align="left">
+                    <p class="m_0">{{ data.text }}</p>
+                  </td>
+                  <td valign="middle" align="center">
+                    <div class="input_wrapper d-flex justify-content-center">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
+                          :checked="data.active" title="Update Status"
+                          @change="(e)=>updateStatus(e,data.restaurant_rating_question_id)" />
+                      </div>
+                    </div>
+                  </td>
+                  <td valign="middle" align="right">
+                    <button type="button" class="btn-primary border-0 rounded px-2 py-1 me-2"
+                      @click="editQuestion(data)" title="Edit Question">
+                      <fa icon="pen" />
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+import { API } from "../../../axois";
+import useVuelidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
+export default {
+  name: "ResturantQuestion",
+  title: "Resturant Question | Dashboard",
+  setup() {
+    return { v$: useVuelidate() };
+  },
+  data() {
+    return {
+      formCheck: false,
+      records: [],
+      flag: false,
+      status: "not active",
+      form: {
+        id: null,
+        question: "",
+      },
+      defaultState: {
+        type: Boolean,
+        default: false,
+      },
+    };
+  },
+  validations() {
+    return {
+      form: {
+        question: { required },
+      },
+    };
+  },
+  created() {
+    this.getRecords();
+  },
+  methods: {
+    paginationCallback(value) {
+      this.page = value;
+      this.getRecords();
+    },
+    updateStatus(e, id) {
+      this.$store.commit("loaderShow");
+      let fd = new FormData();
+      fd.append("restaurant_rating_question_id", id);
+      let status = e.target.checked ? 'active' : 'disabled';
+      fd.append("status", status);
+      fd.append("text", text);
+      API(this, "admin/update-restaurant-rating-question", "post", fd)
+        .then((res) => {
+          this.$store.commit("loaderHide");
+          this.$store.dispatch("SuccessToast", {
+            message: res.data.response.message,
+          });
+        })
+        .catch((err) => {
+          console.error("🚀 ~ file: resturant-questions.vue ~ updateStatus ~ err", err)
+          this.$store.commit("loaderHide");
+        });
+    },
+    getRecords() {
+      this.$store.commit("loaderShow");
+      API(this, "admin/restaurant-rating-questions", "get")
+        .then((response) => {
+          this.records = response.data.response.detail;
+          this.$store.commit("loaderHide");
+        })
+        .catch((err) => {
+          console.error("🚀 ~ file: resturant-questions.vue ~ getRecords ~ err", err)
+          this.$store.commit("loaderHide");
+        });
+    },
+    editQuestion(data) {
+      this.form.question = data.text;
+      this.form.id = data.restaurant_rating_question_id;
+      this.formCheck = true;
+      this.flag = false;
+    },
+    addQuestion() {
+      this.form.question = "";
+      this.formCheck = true;
+      this.flag = true;
+    },
+    handleFrom() {
+      this.v$.$touch();
+      if (!this.v$.$error) {
+        this.$store.commit("loaderShow");
+        let fd = new FormData();
+        fd.append("text", this.form.question);
+        fd.append("status", this.status);
+        var apiCall;
+        if (this.flag) {
+          apiCall = "admin/restaurant-rating-question";
+        } else {
+          apiCall = "admin/update-restaurant-rating-question";
+          fd.append("restaurant_rating_question_id", this.form.id);
+        }
+        API(this, apiCall, "post", fd)
+          .then((response) => {
+            this.form.question = "";
+            this.form.id = null;
+            this.defaultState.default = false;
+            this.status = null;
+            this.getRecords();
+            this.formCheck = false;
+            this.$store.commit("loaderHide");
+            this.$store.dispatch("SuccessToast", {
+              message: response.data.response.message,
+            });
+          })
+          .catch((err) => {
+            console.error("🚀 ~ file: resturant-questions.vue ~ handleFrom ~ err", err)
+            this.$store.commit("loaderHide");
+            let msg = [response.data.response.message];
+            this.$store.dispatch("FailToast", {
+              message: msg,
+            });
+          });
+      }
+    },
+  },
+};
+</script>
+
+<style>
+
+</style>

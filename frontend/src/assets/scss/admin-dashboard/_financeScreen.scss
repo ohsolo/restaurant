@@ -1,0 +1,42 @@
+.finance_page {
+  .nav-link {
+    color: #fff;
+    background-color: #ccc;
+    margin-bottom: 0.8rem;
+    &.active {
+      background-color: orange !important;
+    }
+  }
+  .card {
+    h4 {
+      font-size: clamp(1rem, 1vw, 1.5rem);
+    }
+    span {
+      font-size: clamp(0.8rem, 0.8vw, 1rem);
+    }
+  }
+}
+@include Laptop(1226px) {
+  .finance_page {
+    .card {
+      margin-top: 1rem;
+    }
+  }
+}
+@include Tablet(991px) {
+  .finance_page {
+    .card {
+      margin-top: 1rem;
+    }
+  }
+}
+@include Mobile(640px) {
+  .finance_page {
+      .flex_wrapper {
+          flex-wrap: wrap;
+          .card {
+              width: 100% !important;
+          }
+      }
+  }
+}

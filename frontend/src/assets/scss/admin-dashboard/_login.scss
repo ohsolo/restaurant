@@ -1,0 +1,82 @@
+.admin_login_page {
+  .form_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .form_left_col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 0 10px rgb(0 0 0 / 49%);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    width: 100%;
+    max-width: 400px;
+    min-height: 488px;
+    padding: 4rem 2rem;
+    .logo_wrapper {
+      text-align: center;
+      img {
+        min-width: 80px;
+      }
+    }
+    h5 {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-top: 2rem;
+    }
+  }
+  form {
+    width: 100%;
+    max-width: 600px;
+    min-height: 485px;
+
+    // margin: 0 auto;
+    background-color: #fff;
+    padding: 4rem 3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.493);
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    .resturant_btn {
+      margin-left: 18px;
+      width: 100% !important;
+      max-width: 200px !important;
+    }
+  }
+  h4 {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-weight: 500;
+    margin-bottom: 1.5em;
+  }
+}
+
+@include Tablet(991px) {
+  .admin_login_page {
+    .form_wrapper {
+      .form_left_col {
+        max-width: 300px;
+        min-height: 485px;
+      }
+    }
+  }
+}
+@include Mobile(767px) {
+  .admin_login_page {
+    .form_wrapper {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.493);
+      padding: 0;
+      flex-wrap: wrap;
+      .form_left_col {
+        min-height: unset;
+      }
+      .form_left_col,
+      form {
+        max-width: 100%;
+        padding: 2.5rem 2rem;
+        box-shadow: none;
+      }
+    }
+  }
+}

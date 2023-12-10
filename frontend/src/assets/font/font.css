@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'Goldplay';
+    src: url('Goldplay-Medium.eot');
+    src: local('Goldplay Medium'), local('Goldplay-Medium'),
+        url('Goldplay-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Goldplay-Medium.woff2') format('woff2'),
+        url('Goldplay-Medium.woff') format('woff'),
+        url('Goldplay-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Goldplay';
+    src: url('Goldplay-Bold.eot');
+    src: local('Goldplay Bold'), local('Goldplay-Bold'),
+        url('Goldplay-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Goldplay-Bold.woff2') format('woff2'),
+        url('Goldplay-Bold.woff') format('woff'),
+        url('Goldplay-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Goldplay';
+    src: url('Goldplay-SemiBold.eot');
+    src: local('Goldplay SemiBold'), local('Goldplay-SemiBold'),
+        url('Goldplay-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Goldplay-SemiBold.woff2') format('woff2'),
+        url('Goldplay-SemiBold.woff') format('woff'),
+        url('Goldplay-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Goldplay';
+    src: url('Goldplay-Regular.eot');
+    src: local('Goldplay Regular'), local('Goldplay-Regular'),
+        url('Goldplay-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Goldplay-Regular.woff2') format('woff2'),
+        url('Goldplay-Regular.woff') format('woff'),
+        url('Goldplay-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Goldplay';
+    src: url('Goldplay-Light.eot');
+    src: local('Goldplay Light'), local('Goldplay-Light'),
+        url('Goldplay-Light.eot?#iefix') format('embedded-opentype'),
+        url('Goldplay-Light.woff2') format('woff2'),
+        url('Goldplay-Light.woff') format('woff'),
+        url('Goldplay-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Goldplay';
+    src: url('Goldplay-Black.eot');
+    src: local('Goldplay Black'), local('Goldplay-Black'),
+        url('Goldplay-Black.eot?#iefix') format('embedded-opentype'),
+        url('Goldplay-Black.woff2') format('woff2'),
+        url('Goldplay-Black.woff') format('woff'),
+        url('Goldplay-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Goldplay';
+    src: url('Goldplay-Thin.eot');
+    src: local('Goldplay Thin'), local('Goldplay-Thin'),
+        url('Goldplay-Thin.eot?#iefix') format('embedded-opentype'),
+        url('Goldplay-Thin.woff2') format('woff2'),
+        url('Goldplay-Thin.woff') format('woff'),
+        url('Goldplay-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+

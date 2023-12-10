@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@import './colors';
+@import './mixin';
+@import './resets';
+@import './globalClasses';
+@import './gloablForm';
+@import './loader';
+@import './admin-dashboard/toasts';
+@import './admin-dashboard/_auth_layout.scss';
+@import './admin-dashboard/dashboard_layout';
+@import './admin-dashboard/login';
+@import './admin-dashboard/deliverer';
+@import './admin-dashboard/storeScreens.scss';
+@import './admin-dashboard/financeScreen';
+@import './admin-dashboard/reportsScreen.scss';
+@import './admin-dashboard/riderRanking';
+@import './admin-dashboard/home';
+@import './globalComponents';
+

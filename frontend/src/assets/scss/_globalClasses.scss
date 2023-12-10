@@ -1,0 +1,22 @@
+.p_relative{
+    position: relative;
+}
+
+.bg_primary{
+    background-color: $primary;
+}
+
+.t_primary{
+    color: $primary;
+}
+
+.hover_light:hover{
+    opacity: 0.85;
+}
+.mt_6 {
+    margin-top: 4rem;
+}
+
+.fs_1rem{
+    font-size: 1rem;
+}

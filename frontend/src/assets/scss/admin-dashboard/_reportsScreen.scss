@@ -1,0 +1,39 @@
+.reports_page {
+  .fs_small {
+    font-size: 0.85rem;
+  }
+  .flex_wrapper {
+    .card {
+      h4 {
+        font-size: clamp(1rem, 1vw, 1.5rem);
+      }
+      small {
+        font-size: clamp(0.8rem, 0.8vw, 1rem);
+      }
+    }
+  }
+}
+@include Mobile(776px) {
+  .reports_page {
+    .flex_wrapper {
+      flex-wrap: wrap;
+      .card {
+        width: 40% !important;
+      }
+    }
+  }
+}
+@include Mobile(455px) {
+  .reports_page {
+    .flex_wrapper {
+      .card {
+        width: 100% !important;
+      }
+    }
+    .az_globalForm {
+      .input_wrapper {
+          max-width: 100% !important;
+      }
+    }
+  }
+}

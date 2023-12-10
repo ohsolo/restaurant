@@ -1,0 +1,33 @@
+@mixin Smooth($x) {
+  transition: $x all ease-in-out;
+}
+
+@mixin Desktop($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin Laptop($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin Tablet($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin Mobile($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin TabletMin($width) {
+  @media (min-width:#{$width}) {
+    @content;
+  }
+}

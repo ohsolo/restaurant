@@ -1,0 +1,41 @@
+.az_search_content {
+  position: relative;
+  .search_content {
+    position: absolute;
+    margin-top: 0.5rem;
+    z-index: 5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.2rem 0;
+    width: 100%;
+    background-color: #fff;
+    max-height: 400px;
+    width: 100%;
+    overflow: scroll;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .dim {
+      color: #ccc;
+    }
+
+    button {
+      border-bottom: 1px solid #ccc;
+      background-color: transparent;
+      width: 100%;
+      text-align: start;
+      padding: 0.5rem 1rem;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: $primary;
+        color: #fff;
+      }
+    }
+  }
+}
